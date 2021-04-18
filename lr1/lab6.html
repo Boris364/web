@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>ЛР1.6 Кулаков</title>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №6.</h3>
+			<div class="text">
+				<p>Таблица степеней двойки</p><br>
+
+				<script language="JavaScript">
+					document.write('<table><tr><th>Степень</th><th>Результат</th></tr>');
+					for(var i=0; i<6; i++) {
+						document.write('<tr><td>2 <sup>' + i + '</sup></td><td>' + Math.pow(2,i) + '</td></tr>');
+					}
+					document.write('</table>');
+				</script>
+
+				<p></p>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab5.html" id="task_before">Задача №5</a>
+			<a href="../lr1.html" id="task_list">Список задач</a>
+			<a href="lab7.html" id="task_after">Задача №7</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>ЛР1.7 Кулаков</title>
+
+	<script language="JavaScript">
+		function getYear(){
+			year = new Array("декабрь","январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь");
+			summer = new Array();
+			summer = year.slice(6,9);
+			document.write(summer+"<br><br>");
+		}
+
+		function getScience(){
+			science = new Array("Философия","Культурология","Литература","Психология","Физика","Химия","Геометрия","Информатика");
+			exact = new Array();
+			humane = new Array();
+			exact = science.slice(4,8);
+			humane = science.slice(0,4);
+			document.write("Точные науки: " + exact +"<br><br>");
+			document.write("Гуманитарные науки: " + humane +"<br>");	
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №7.</h3>
+			<div class="text">
+				<p></p><br>
+				
+				<script language="JavaScript">
+					getYear();
+					getScience();
+				</script>
+
+				<p></p>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab6.html" id="task_before">Задача №6</a>
+			<a href="../lr1.html" id="task_list">Список задач</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

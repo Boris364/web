@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>ЛР1.3 Кулаков</title>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №3.</h3>
+			<div class="text">
+				<p>Теперь можно и познакомиться.</p>
+				<p id="result"></p>
+
+				<script language="JavaScript">
+					var name = prompt("Введите сюда своё имя", "Ваше имя");
+
+					switch(name.trim()){
+						case "": result = "Жаль, что вы не назвали свое имя";
+							break;
+						case "null": result = "Жаль, что вы не назвали свое имя";
+							break;
+						default: result = "Вы представились как – " + name;
+					}
+
+					document.getElementById("result").innerHTML = result;
+
+					let answer = confirm("Начать заново?");
+					if(answer) alert("Не надоело?")
+						else alert("Ну и правильно!")
+							
+				</script>
+
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab2.html" id="task_before">Задача №2</a>
+			<a href="../lr1.html" id="task_list">Список задач</a>
+			<a href="lab4.html" id="task_after">Задача №4</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

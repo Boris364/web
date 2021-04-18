@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>ЛР1.4 Кулаков</title>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №4.</h3>
+			<div class="text">
+
+				<p><b>Результаты экспреимента:</b></p><br>
+				<p>Введенное значение x = <span id="var_x"></span></p>
+				<p>Введенное значение y = <span id="var_y"></span></p>
+				<p>Вердикт: <span id="result"></span></p>
+				<br>
+				<p>Ваш вариант пароля оказался <span id="pass_res"></span></p>
+
+				<script language="JavaScript">
+
+					var x, y, result;
+					x = parseInt(prompt("Введите значение х",''));
+					y = parseInt(prompt("Введите значение у",''));
+					document.getElementById("var_x").innerHTML = x;
+					document.getElementById("var_y").innerHTML = y;
+
+					if(x<y){
+						alert(" Максимальное число – y");
+						result = "Максимальное число – y";
+						document.getElementById("result").innerHTML = result;
+					}
+					else if(x==y){
+						alert("Введенные числа равны!");
+						result = "Введенные числа оказались равны";
+						document.getElementById("result").innerHTML = result;
+					}
+					else{
+						alert(" Максимальное число – x");
+						result = "Максимальное число – x";
+						document.getElementById("result").innerHTML = result;
+					}
+
+					var password, pass_res;
+					password = prompt("Для продолжения введите пароль", '');
+
+					if (password == 12345) {
+						alert("Ого, вы смогли угадать пароль!");
+						pass_res = "верным!";
+						document.getElementById("pass_res").innerHTML = pass_res;
+					}else {
+						alert("Кажется что-то пошло не так, пароль не верный.");
+						pass_res = "неправильным.";
+						document.getElementById("pass_res").innerHTML = pass_res;
+					}
+					
+				</script>
+
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab3.html" id="task_before">Задача №3</a>
+			<a href="../lr1.html" id="task_list">Список задач</a>
+			<a href="lab5.html" id="task_after">Задача №5</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>
