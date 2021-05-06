@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР2.3 Кулаков</title>
+	<link rel="stylesheet" href="style3.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+
+	<script language="JavaScript">
+		$(document).ready(function(){
+			function getRandomInt(max) {
+				return Math.floor(Math.random() * max);
+			}
+			$("#hole").offset(function(i,val){
+				return {top:val.top + (2-getRandomInt(5))*100, left:val.left + (4-getRandomInt(9))*100};
+			});
+
+			$("#restart").click(function(){
+				location.reload();
+			});
+
+			$("#ball").offset(function(i,val){
+				return {top:val.top, left:val.left};
+			});
+			var x = 0, y = 0;
+			$("#up").click(function(){
+				if ($("#ball").position().top > 50) {
+					$("#ball").animate({top: "-=100"}, 200, "linear");
+				}
+			});
+			$("#left").click(function(){
+				if ($("#ball").position().left > 50) {
+					$("#ball").animate({left: "-=100"}, 200, "linear");
+				}
+			});
+			$("#right").click(function(){
+				if ($("#ball").position().left < 700) {
+					$("#ball").animate({left: "+=100"}, 200, "linear");
+				}
+			});
+			$("#down").click(function(){
+				if ($("#ball").position().top < 350) {
+					$("#ball").animate({top: "+=100"}, 200, "linear");
+				}				
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №3. Закатите мячик в лунку</h3>
+			<div class="control">
+				<button id="up"></button>
+				<button id="left"></button>
+				<button id="right"></button>
+				<button id="down"></button>
+				<button id="restart">Заново</button>
+			</div>
+
+			<div id="field">
+				<div id="ball"></div>
+				<div id="hole"></div>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab2.html" id="task_before">Задача №2</a>
+			<a href="../lr2.html" id="task_list">Список задач</a>
+			<a href="lab4.html" id="task_after">Задача №4</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

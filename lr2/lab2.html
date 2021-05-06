@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР2.2 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script language="JavaScript">
+		$(document).ready(function(){
+			$("#send").click(function () {
+				// объявление переменных
+				var name = document.getElementById("firstname");
+				var name_v = $.trim(name.value);
+
+				var pass = document.getElementById("pass");
+				var pass_v = $.trim(pass.value);
+
+				var pass_check = document.getElementById("pass_check");
+				var pass_check_v = $.trim(pass_check.value);
+
+				var email = document.getElementById("email");
+				var email_v = $.trim(email.value);
+
+				var theme = document.getElementById("theme");
+				var theme_v = $.trim(theme.value);
+
+				var message = document.getElementById("message");
+				var message_v = $.trim(message.value);
+
+				var errors = "";
+				//проверка поля ИМЯ 
+				if (name_v == "") {
+					errors = "Введите имя\n";
+					$("#firstname").css("border", "3px solid red");			
+				}else{
+					$("#firstname").css("border", "3px solid #000");			
+				}
+				// проверка поля ПАРОЛЬ
+				if (pass_v == "") {
+					errors += "Введите пароль\n";
+					$("#pass").css("border", "3px solid red");			
+				}else{
+					if (pass_v.length <= 4) {
+						errors += "Пароль слишком короткий (меньше 5 символов)\n";
+						$("#pass").css("border", "3px solid red");	
+					}else{
+						$("#pass").css("border", "3px solid #000");	
+					}		
+				}
+				// проверка поля ПОДТВЕРЖДЕННОГО ПАРОЛЯ
+				if (pass_check_v == "") {
+					errors += "Подтвердите пароль\n";
+					$("#pass_check").css("border", "3px solid red");			
+				}else{
+					if (pass_check_v != pass_v) {
+						errors += "Пароли не совпадают\n";
+						$("#pass_check").css("border", "3px solid red");	
+					}else{
+						$("#pass_check").css("border", "3px solid #000");	
+					}		
+				}
+				// проверка поля ПОЧТЫ
+				if (email_v == "") {
+					errors += "Введите адрес почты\n";
+					$("#email").css("border", "3px solid red");			
+				}else{
+					if (!email_v.includes("@", 1)) {
+						errors += "Адрес почты введен некорректно\n";
+						$("#email").css("border", "3px solid red");	
+					}else{
+						$("#email").css("border", "3px solid #000");	
+					}		
+				}
+				// проверка поля ТЕМЫ
+				if (theme_v == "") {
+					$("#theme").val("*без темы");
+					$("#theme").css("border", "3px solid #000");		
+				}
+				// проверка поля СООБЩЕНИЯ
+				if (message_v == "") {
+					errors += "Введите сообщение\n";
+					$("#message").css("border", "3px solid red");			
+				}else{
+					if (message_v.length <= 10) {
+						errors += "Сообщение слишком короткое (меньше 10 символов)";
+						$("#message").css("border", "3px solid red");	
+					}else{
+						$("#message").css("border", "3px solid #000");	
+					}		
+				}
+				// вывод результата
+				if (errors != "") {
+					alert(errors);
+				}else{
+					alert($.trim(name.value) + ", ваше сообщение успешно отправлено!");
+				}
+
+			});
+			$("#reset").click(function () {
+				$("input[type=text]").css("border", "1px solid #767676");
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №2.</h3>
+			<div class="text">
+				<form name="user">
+					Ваше имя: <br> 
+					<input id="firstname" type = "text"  name = "firstname"> <br> <br>
+					Пароль: <br> 
+					<input id="pass" type = "text" name = "pass"> <br> <br>
+					Подтверждение пароля: <br> 
+					<input id="pass_check" type = "text"  name = "pass_check"> <br> <br>
+					Email: <br> 
+					<input id="email" type = "text" name = "email"> <br> <br>
+					Тема сообщения: <br> 
+					<input id="theme" type = "text"  name = "theme"> <br> <br>
+					Сообщение: <br> 
+					<input id="message" type = "text" name = "message"> <br> <br>
+					<input type="button" id="send" class="button" value="Отправить">
+					<input type="reset" id="reset" class="button" value="Очистить">
+				</form>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab1.html" id="task_before">Задача №1</a>
+			<a href="../lr2.html" id="task_list">Список задач</a>
+			<a href="lab3.html" id="task_after">Задача №3</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

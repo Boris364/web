@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР2.4 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+
+	<script language="JavaScript">
+		$(document).ready(function(){
+			$( document ).mousemove(function( event ){
+		    	$( ".text div:first" ).text( "X: " + event.pageX );
+		    	$( ".text div:last" ).text( "Y: " + event.pageY );
+	 		});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №4.</h3>
+			<div class="text">
+				<p>Координаты мыши:</p>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab3.html" id="task_before">Задача №3</a>
+			<a href="../lr2.html" id="task_list">Список задач</a>
+			<a href="lab5.html" id="task_after">Задача №5</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

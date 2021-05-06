@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР2 Примеры</title>
+	<link rel="stylesheet" href="exmpl.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 1
+			$(".slide").click(function () {
+				$("#panel").slideToggle("slow");
+				$(this).toggleClass("active");
+			});
+			// 2 
+			$(".pane .delete").click(function () {
+				$(this).parents(".pane").animate({ opacity: "hide"}, "slow");
+			});
+			// 3
+			$(".run").click(function(){
+				$("#box")
+				.animate({opacity: "0.1", left: "+=400"}, 1200)
+				.animate({opacity: "0.4", top: "+=160", height: "40", width: "40"}, "slow")
+				.animate({opacity: "1", left: "0", height: "50", width: "100"}, "slow")
+				.animate({top: "0"}, "fast")
+				.slideUp()
+				.slideDown("slow")
+				return false;
+			});
+			// 4
+			$(".accordion h3:first").addClass("active");
+			$(".accordion p:not(:first)").hide();
+			$(".accordion h3").click(function () {
+				$(this).next("p").slideToggle("slow")
+				.siblings("p:visible").slideUp("slow");
+				$(this).toggleClass("active");
+				$(this).siblings("h3").removeClass("active");
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="section">
+		<div class="txt">Пример №1</div>
+		<div class="task">
+			<div id="panel">Выдвижная панель</div>
+			<button class="btn slide">Нажми!</button>
+		</div>
+		<a href="../lr2.html" id="task_list">Список задач</a>
+	</div>
+
+	<div class="section">
+		<div class="txt">Пример №2</div>
+		<div class="task pane">
+			<button class="delete">X</button>
+			<p>jQuery — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. Библиотека jQuery помогает легко получать доступ к любому элементу DOM, обращаться к атрибутам и содержимому элементов DOM, манипулировать ими. Также библиотека jQuery предоставляет удобный API для работы с AJAX.</p>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="txt">Пример №3</div>
+		<div class="task" id="runblock">
+			<button class="btn run">Начать движение</button>
+			<div class="control_block_container">
+				<div id="box">Управляемый блок</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="txt">Пример №4</div>
+		<div class="task accordion">
+			<h3>Первый заголовок</h3>
+			<p><b>Первый блок</b><br>jQuery — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. Библиотека jQuery помогает легко получать доступ к любому элементу DOM, обращаться к атрибутам и содержимому элементов DOM, манипулировать ими. Также библиотека jQuery предоставляет удобный API для работы с AJAX.</br></p>
+			<h3>Второй заголовок</h3>
+			<p><b>Второй блок</b><br>jQuery — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. Библиотека jQuery помогает легко получать доступ к любому элементу DOM, обращаться к атрибутам и содержимому элементов DOM, манипулировать ими. Также библиотека jQuery предоставляет удобный API для работы с AJAX.</br></p>
+			<h3>Третий заголовок</h3>
+			<p><b>Третий блок</b><br>jQuery — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. Библиотека jQuery помогает легко получать доступ к любому элементу DOM, обращаться к атрибутам и содержимому элементов DOM, манипулировать ими. Также библиотека jQuery предоставляет удобный API для работы с AJAX.</br></p>
+		</div>
+	</div>
+</body>
+</html>

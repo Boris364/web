@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР2.1 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+
+	<script language="JavaScript">
+		$(document).ready(function(){
+			var first_col = $(".content").css("background-color");
+			$("#fon").click(function () {
+				if ($(".content").css("background-color") == first_col) {
+					$(".content").css("background-color", "#FA98B1");
+					$("#fon").css("background-color", first_col);			
+				}else{
+					$(".content").css("background-color", first_col);
+					$("#fon").css("background-color", "#FA98B1");
+				}
+
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №1.</h3>
+			<button id="fon">
+				Изменить цвет
+			</button>
+		</div>
+
+		<div class="navigate">
+			<a href="../lr2.html" id="task_list">Список задач</a>
+			<a href="lab2.html" id="task_after">Задача №2</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

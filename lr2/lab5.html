@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР2.5 Кулаков</title>
+	<link rel="stylesheet" href="style5.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+
+	<script language="JavaScript">
+		$(document).ready(function(){
+
+			$(".drag").mousedown(function(){
+
+				$(".drag").addClass('moving');
+
+				var x, y;
+				$(".drag").offset(function(i,val){
+					x = val.left;
+					y = val.top;
+					return {top:val.top, left:val.left};
+				});
+				var start_x = event.pageX - x;
+				var start_y = event.pageY - y;
+				var dist_x, dist_y;
+
+				$(document).mousemove(function ( event ){
+		    		dist_x = event.pageX - start_x;
+		    		dist_y = event.pageY - start_y;
+		    		$(".moving").animate({top: dist_y}, 0, "linear");
+		    		$(".moving").animate({left: dist_x}, 0, "linear");
+
+	 			});
+			});
+			$(".drag").mouseup(function( event ){
+    			$(".drag").removeClass('moving');
+	 		});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №5. <a href="https://mars.nasa.gov/technology/helicopter/#"target="_blank">Марсианский вертолетик.</a> Летает!</h3>
+			<div class="text">
+				<div class="drag"></div>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab4.html" id="task_before">Задача №4</a>
+			<a href="../lr2.html" id="task_list">Список задач</a>
+			<a href="lab6.html" id="task_after">Задача №6</a>
+		</div>
+	</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

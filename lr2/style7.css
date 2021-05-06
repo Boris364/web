@@ -1,0 +1,132 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+html, body{
+	height: 100%;	
+}
+body{
+	display: flex;
+  	flex-direction: column;
+	font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+}
+
+.content {
+  	flex: 1 0 auto;
+  	padding-bottom: 70px;
+  	background-color: #bae8e8;
+  	position: relative;
+}
+	.main{
+		width: 800px;
+		margin: 50px auto;
+		color: #001e1d;
+	}
+		.main h3{
+			font-size: 27px;
+			text-decoration: underline;
+			padding: 0px 0px 20px 40px;
+		}
+		
+		.calculator{
+			width: 300px;
+			border: 3px solid #001e1d;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 0px auto;
+		}
+			.calculator div{
+				width: 70px;
+				padding: 5px;
+				text-align: center;
+				background-color: #D5D3D3;
+				border: 1px solid #001e1d;
+				font-size: 23px;
+				box-sizing: border-box;
+				margin-top: 5px;
+
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+				.calculator div:hover{
+					background-color: #BEBCBC;
+				}
+				.calculator div:active{
+					background-color: #D5D3D3;
+				}
+			#result{
+				margin: 0px;
+				width: 300px;
+				height: 50px;
+				background-color: #EFFADB;
+				text-align: right;
+				font-size: 23px;
+			}
+			#del, #clear{
+				width: 147px;
+			}
+			#num0{
+				width: 147px;
+			}
+			#ravno{
+				width: 300px;
+			}
+
+
+
+
+	.navigate{
+		position: absolute;
+		left: 25%;
+		right: 25%;
+		bottom: 30px;
+		min-width: 400px;
+		display: flex;
+		justify-content: space-between;
+	}
+		.navigate a{
+			color: #001e1d;
+			background-color: #f9bc60;
+			border: 2px solid #001e1d;
+			border-radius: 5px;
+			padding: 15px;
+			font-size: 16px;
+			text-decoration: none;
+			text-align: center;
+		}
+		.navigate #task_before:hover{
+			box-shadow: -5px 5px 7px rgba(0,0,0,0.5);
+		}
+		.navigate #task_list:hover{
+			box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		}
+		.navigate #task_after:hover{
+			box-shadow: 5px 5px 7px rgba(0,0,0,0.5);
+		}
+
+#footer{
+	height: 80px;
+	flex-shrink: 0;
+	background-color: #6DC3C3;
+}
+
+	.footer_text{
+		margin: 15px auto;
+		height: 50px;
+		width: 400px;
+	}
+		.footer_text img{
+			height: inherit;
+			float: left;
+		}
+		.footer_text p{
+			padding-top: 15px;
+			padding-left: 110px;
+			font-size: 16px;
+			color: #000;
+		}

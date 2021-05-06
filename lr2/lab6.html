@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>ЛР2.6 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+
+	<script language="JavaScript">
+		$(document).ready(function(){
+			var number = 0, num1 = 0, num2 = 0, num3 = 0, num4 = 0;
+			var percent = 0;
+			$("#getAnswers").click(function () {
+				check();
+				if (percent==0) {
+					alert("Проголусйте первым!");
+				}else alert("Ваш голос совпал с " + percent + "% опрошенных");
+			});
+			function check() {
+				if (document.getElementById("rad1").checked) {
+					number++;
+					num1++;
+					percent = Math.round((num1*100)/number);
+				}
+				if (document.getElementById("rad2").checked) {
+					number++;
+					num2++;
+					percent = Math.round((num2*100)/number);
+				}
+				if (document.getElementById("rad3").checked) {
+					number++;
+					num3++;
+					percent = Math.round((num3*100)/number);
+				}
+				if (document.getElementById("rad4").checked) {
+					number++;
+					num4++;
+					percent = Math.round((num4*100)/number);
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<h3>Задание №6.</h3>
+			<div class="text">
+				<p>Вопрос дня:</p>
+				<p>Сколько нужно спать для счастья?</p>
+				<p><input type="radio" name="answ" id="rad1">6 часов <br>
+				<input type="radio" name="answ" id="rad2">8 часов <br>
+				<input type="radio" name="answ" id="rad3">10+ часов <br>
+				<input type="radio" name="answ" id="rad4">Зачем спать, когда есть JavaScript <br>
+				</p>
+				<div id="getAnswers">Ответить</div>
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="lab5.html" id="task_before">Задача №5</a>
+			<a href="../lr2.html" id="task_list">Список задач</a>
+			<a href="lab7.html" id="task_after">Задача №7</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>
