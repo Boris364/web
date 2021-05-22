@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР3.2 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script language="JavaScript">
+		$(document).ready(function(){
+
+			$.ajax(
+				'set_data.php',
+			{
+				success: function(data) {
+				function all_Otz() {
+                	const feedback = document.querySelector('#feedback');
+                	const otzyvi = JSON.parse(data);
+                    const spisok = otzyvi;
+                    if(otzyvi != null){
+                        for(let i = 0; i < spisok.length; i++) {
+                        	const section = document.createElement('div');
+                    		const name = document.createElement('p');
+                    		const mail = document.createElement('p');
+                    		const text_otz = document.createElement('p');
+                    
+                    		section.classList.add('otzyv');
+                    
+                    		name.textContent = spisok[i]['name'];
+                    		mail.textContent = spisok[i]['mail'];
+                    		text_otz.textContent = spisok[i]['txt'];
+                    
+                    		section.appendChild(name);
+                    		section.appendChild(mail);
+                    		section.appendChild(text_otz);
+                    
+                    		feedback.appendChild(section);
+                    	}
+                    }
+                }
+                all_Otz();
+			},
+				error: function() {
+					alert('There was some error performing the AJAX call!');
+				}
+			});
+
+			$("#send").click(function () {
+				function check() {
+					// объявление переменных
+					var name = document.getElementById("firstname");
+					var name_v = $.trim(name.value);
+
+					var email = document.getElementById("email");
+					var email_v = $.trim(email.value);
+
+					var message = document.getElementById("message");
+					var message_v = $.trim(message.value);
+
+					var errors = "";
+					//проверка поля ИМЯ 
+					if (name_v == "") {
+						errors = "Введите имя\n";
+						$("#firstname").css("border", "3px solid red");			
+					}else{
+						$("#firstname").css("border", "3px solid #000");			
+					}
+					// проверка поля ПОЧТЫ
+					if (email_v == "") {
+						errors += "Введите адрес почты\n";
+						$("#email").css("border", "3px solid red");			
+					}else{
+						if (!email_v.includes("@", 1)) {
+							errors += "Адрес почты введен некорректно\n";
+							$("#email").css("border", "3px solid red");	
+						}else{
+							$("#email").css("border", "3px solid #000");	
+						}		
+					}
+					// проверка поля СООБЩЕНИЯ
+					if (message_v == "") {
+						errors += "Введите сообщение\n";
+						$("#message").css("border", "3px solid red");			
+					}else $("#message").css("border", "3px solid #000");
+					// вывод ошибок
+					if (errors != "") alert(errors)
+					else{
+					    var otz_arr = $( "form" ).serializeArray();
+        				$.ajax({
+        		            type: "POST",
+        	                url: 'set_data.php',
+        	                data: {new_arr: otz_arr}
+        		        }).done(function(data) {
+        		            function addOtz() {
+                            	const feedback = document.querySelector('#feedback');
+                            	const otzyvi = JSON.parse(data);
+                                const spisok = otzyvi;
+            
+                             	const section = document.createElement('div');
+                        		const name = document.createElement('p');
+                        		const mail = document.createElement('p');
+                        		const text_otz = document.createElement('p');
+                        
+                        		section.classList.add('otzyv');
+                        
+                        		name.textContent = otzyvi[0]['value'];
+                        		mail.textContent = otzyvi[1]['value'];
+                        		text_otz.textContent = otzyvi[2]['value'];
+                        
+                        		section.appendChild(name);
+                        		section.appendChild(mail);
+                        		section.appendChild(text_otz);
+                        
+                        		feedback.appendChild(section);
+                            }
+                            addOtz();
+        	            });
+					}
+				}
+				check();
+			});
+			
+			$("#reset").click(function () {
+				$("input[type=text]").css("border", "1px solid #767676");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<h2>Оставьте свое послание в истории.</h2>
+
+			<form name="user">
+				Ваше имя: <br> 
+				<input id="firstname" type = "text"  name = "firstname"> <br> <br>
+				Email: <br> 
+				<input id="email" type = "text" name = "email"> <br> <br>
+				Сообщение: <br> 
+				<input id="message" type = "text" name = "message"> <br> <br>
+				<input type="button" id="send" class="button" value="Отправить">
+				<input type="reset" id="reset" class="button" value="Очистить">
+			</form>
+
+			<div id="feedback">
+			</div>
+		</div>
+
+		<div class="navigate">
+			<a href="../lr3.html" id="task_list">Список задач</a>
+			<a href="lab1.html" id="task_after">Задача №1</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>

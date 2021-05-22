@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР3.1 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+	$( document ).ready(function(){
+		$(".showmore").click(function () {
+	    	var tek = $('.section').length;
+	    	if (tek != 15){
+	    	    $.ajax({
+	            type: "POST",
+                url: 'get_data.php',
+                data: {tek: tek}
+	        }).done(function( data ) {
+	            console.log(data);
+	            function addCountry() {
+                	const countrys = JSON.parse(data);
+                	const main = document.querySelector('.main');
+                    const spisok = countrys;
+                	for(let i = 0; i < spisok["country"].length; i++) {
+                    	const section = document.createElement('div');
+                		const foto = document.createElement('img');
+                		const cName = document.createElement('h3');
+                		const cInfo = document.createElement('p');
+                
+                		section.classList.add('section');
+                
+                		foto.src = spisok["foto"][i];
+                		cName.textContent = spisok["country"][i];
+                		cInfo.textContent = spisok["info"][i];
+                
+                		section.appendChild(foto);
+                		section.appendChild(cName);
+                		section.appendChild(cInfo);
+                
+                		main.appendChild(section);
+                	}
+                }
+                addCountry();
+	            });
+	    	}else alert("Данный ТОП стран рассчитан только на 15 мест.")
+	    })
+	});
+
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<h1>Где лучше всего жить в мире</h1>
+			<div class="section">
+			    <img src="images/denmark.jpg">
+			    <h3>Дания</h3>
+			    <p>Самая лучшая страна для проживания по уровню жизни – Дания. Спокойная и размеренная, с мягким климатом, низкой безработицей и преступностью, развитым сельским хозяйством и уровнем образования. У датчан множество причин для радости: хороший баланс работы и личной жизни, они заботятся об окружающей среде, у них отличное здравоохранение. А еще у них стопроцентная грамотность населения и один из самых низких разрывов в уровне благосостояния между разными социальными слоями.</p>
+			</div>
+			
+			<div class="section">
+			    <img src="images/norway.jpg">
+			    <h3>Норвегия</h3>
+			    <p>Норвегия – страна фьордов, троллей и викингов. Это один из самых загадочных и живописных уголков нашей планеты. Жить в стране – недешевое удовольствие, но при этом все слои населения социально защищены и получают финансовую помощь при необходимости.Чаще всего в Норвегию приезжают по учебе и работе. Во втором случае всегда открыты вакансии в сферу услуг, программирование, медицину, строительную сферу.</p>
+			</div>
+			
+			<div class="section">
+			    <img src="images/switzerland.jpg">
+			    <h3>Швейцария</h3>
+			    <p>В ТОП-3 лучших стран для жизни всегда входит Швейцария. Её плюс – социальные гарантии, которые дают гражданам наибольшую продолжительность жизни в Европе. Это дорогая страна – у неё самый высокий индекс стоимости жизни. Помимо красивых видов Швейцария отличается высоким уровнем экологической чистоты, наисовременнейшей инфраструктурой и развитой экономикой. Особое внимание уделяется здоровому питанию и образу жизни швейцарцев, поэтому в стране один из самых низких показателей ожирения – всего 8%. А еще Швейцария не участвовала в войнах с 1847 года.</p>
+			</div>
+			
+			<div class="section">
+			    <img src="images/sweden.jpg">
+			    <h3>Швеция</h3>
+			    <p>Список самых лучших стран для жизни в мире нельзя представить без Швеции, из-за её развитой медицины, отсутствия коррупции и безработицы.Требования к мигрантам жёсткие: в подданстве могут отказать даже тем, кто уже в браке с гражданами Швеции. Зато тем, кто смог стать гражданином страны, дают социальные привилегии, бесплатное образование и высокооплачиваемую работу.</p>
+			</div>
+			
+			<div class="section">
+			    <img src="images/finland.jpg">
+			    <h3>Финляндия</h3>
+			    <p>В Финляндии очень низкий уровень коррупции и больше леса на квадратный километр, чем в любой другой европейской стране. Самые простой способ переезда – открытие бизнеса на территории страны или получение рабочей визы (особенно ценятся специалисты в области программирования, химии, инженерии, физики).</p>
+            </div>
+		</div>
+
+		<div class="navigate">
+			<a href="../lr3.html" id="task_list">Список задач</a>
+			<button class="showmore">Показать больше</button>
+			<a href="lab2.html" id="task_after">Задача №2</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>
