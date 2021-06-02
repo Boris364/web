@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР5 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+	<link rel="stylesheet" href="ui/jquery-ui.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="ui/jquery-ui.min.js"></script>
+	<script src="jquery.myPlugin.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$(document).myPlugin();
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<h2>Вариант 3. Бросание кубиков</h2>
+		<div class="main">
+			
+			<div id="menu">
+				<h2>Количество кубиков</h2>
+				<div id="slider"></div>
+				<p id="raund"></p>
+				<p id="result"></p>
+				<button class="btn btn-success" id="restart">Новая игра</button>
+			</div>
+
+			<div class="igrok" id="robot">
+				<h2>Компьютер</h2>
+				<div class="cub_field">
+					<div class="cube"></div>
+					<div class="cube" style="display: none"></div>
+					<div class="cube" style="display: none"></div>
+					<div class="cube" style="display: none"></div>
+				</div>
+			</div>
+
+			<button class="btn btn-success" id="brosok">Бросить кубики</button>
+
+			<div class="igrok" id="you">
+				<div class="cub_field">
+					<div class="cube"></div>
+					<div class="cube" style="display: none"></div>
+					<div class="cube" style="display: none"></div>
+					<div class="cube" style="display: none"></div>
+				</div>
+				<h2>Вы</h2>
+			</div>
+
+			<div id="dialog">
+				<h2 id="winner"></h2>
+			</div>
+
+		</div>
+		<div class="navigate">
+			<a href="../index.html" id="task_list">На главную</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>
