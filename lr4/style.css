@@ -1,0 +1,124 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+html, body{
+	height: 100%;	
+}
+body{
+	display: flex;
+  	flex-direction: column;
+	font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+	min-width: 850px;
+}
+
+.content {
+  	flex: 1 0 auto;
+  	padding-bottom: 70px;
+  	background-color: #bae8e8;
+  	position: relative;
+}
+	.main{
+		width: 800px;
+		margin: 50px auto;
+		color: #001e1d;
+		border: 3px solid black;
+		padding: 0px 20px 20px;
+		box-sizing: border-box;
+	}
+
+	#contr{
+		height: 200px;
+		border-radius: 10px;
+		background: url(img/sea.jpg) no-repeat center;
+		background-size: cover;
+		position: relative;
+	}
+		#contr form{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%)
+		}
+		#search{
+			font-size: 23px;
+			width: 190px;
+			padding: 5px;
+			border-radius: 10px;
+			color: #232946;
+			text-align: center;
+		}
+
+	h2{
+		text-align: center;
+		margin: 20px auto;
+	}
+
+	#period{
+		width: 550px;
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+	}
+		.group-first label, .group-first input{
+			font-size: 18px;			
+		}
+		.group-first input{
+			width: 120px;
+			text-align: center;
+		}
+
+	#slider{
+		width: 450px;
+		margin: 0px auto 15px;
+	}
+	#kolvo{
+		text-align: center;
+		font-size: 26px;
+		font-weight: bold;
+	}
+	.btn, .navigate a{
+		display: block;
+		margin: 30px auto 0px;
+		padding: 10px;
+		background-color: #FA98B1;
+		border: 2px solid #001e1d;
+		border-radius: 5px;
+		width: 150px;
+		font-size: 20px;
+		text-decoration: none;
+		text-align: center;
+		color: #001e1d;
+	}
+		.btn:hover, .navigate #task_list:hover{
+			box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		}
+
+	#info{
+		display: flex;
+		justify-content: space-around;
+	}
+
+#footer{
+	height: 80px;
+	flex-shrink: 0;
+	background-color: #6DC3C3;
+}
+
+	.footer_text{
+		margin: 15px auto;
+		height: 50px;
+		width: 400px;
+	}
+		.footer_text img{
+			height: inherit;
+			float: left;
+		}
+		.footer_text p{
+			padding-top: 15px;
+			padding-left: 110px;
+			font-size: 16px;
+			color: #000;
+		}

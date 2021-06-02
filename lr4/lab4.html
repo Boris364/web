@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ЛР4 Кулаков</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="../jquery.js"></script>
+	<link rel="stylesheet" href="ui/jquery-ui.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="ui/jquery-ui.js"></script>
+	<script src="ui/datepicker-ru.js"></script>
+
+	<script language="JavaScript">
+		$(document).ready(function() {
+			$(function(){
+				var strani = [
+					"Дания","Швейцария","Сингапур",
+					"Германия","Австрия","Исландия",
+					"Великобритания",
+					];
+				var images = [
+					"denmark.jpg","switzerland.jpg","singapore.jpg",
+					"germany.jpg","austria.jpg","iceland.jpg",
+					"uk.jpg",
+					];
+				var pos;
+				var time_tur = 1;
+				var kolvo, hotel_type;
+				var stoim = 0;
+
+				$("#accordion").accordion({
+					collapsible: true
+				});
+				$("#search").autocomplete({
+					source: strani,
+					select: function(event, ui) {
+						pos = strani.indexOf(ui.item.label);
+       					$("#contr").css({"background": "url(img/" + images[pos] + ") no-repeat bottom"});
+       				}
+				});
+				$("#date").datepicker($.datepicker.regional[ "ru" ]);
+				$("#date").datepicker({
+					dateFormat: "dd.mm.yy"
+				});
+				$('#dialog').dialog({
+			    	resizable: false,
+					height: "auto",
+			    	width: 600,
+			    	autoOpen: false,
+			    	buttons: {
+						"Узнать цену": function() {
+							$('#choice').dialog('open');
+
+							kolvo = $("#kolvo").text();
+							hotel_type = $("#select option:selected").text();
+							time_tur = Number($("#days").val());
+
+							switch(hotel_type){
+								case "Бутик-отель": 
+									stoim = 20000;
+									break;
+								case "Апартаменты" : 
+									stoim = 40000;
+									break;
+								case "Bed and Breakfast" : 
+									stoim = 5000;
+									break;
+								case "Хостел" : 
+									stoim = 3000;
+									break;
+							}
+							stoim = stoim*kolvo*time_tur;
+
+							$("#price").text(stoim + " рублей");
+			        	},
+			        	Назад: function() {
+			        		$( this ).dialog( "close" );
+			        	}
+			      	}
+			    });
+
+				$('#contact').css( "display", "none" );
+				
+				$('#choice').dialog({
+					height: "auto",
+			    	width: 500,
+			    	autoOpen: false,
+			    	buttons: {
+						"То что надо!": function() {
+							$('#choice').dialog({width: 740, height: 500});
+							$('#contact').show("clip", 700);
+			        	},
+						"Я передумал": function() {
+			        		$( this ).dialog( "close" );
+							$('#contact').hide();
+			        		$('#choice').dialog({height: "auto", width: 500});
+			        	}
+
+			      	}
+			    });
+				$('#finish').dialog({
+					height: "auto",
+			    	width: 300,
+			    	autoOpen: false,
+			    	buttons: {
+						"Спасибо": function() {
+			        		$( this ).dialog("close");
+			        		$('#contact').hide();
+			        		$('#choice').dialog({height: "auto", width: 500});
+			        		$('#choice').dialog("close");
+			        		$('#dialog').dialog("close");
+			        	}
+			      	}
+				});
+				
+				$("#select").selectmenu();
+				$('#slider').slider({
+					min: 1,
+					max: 10,
+					step: 1,
+					create: function() {
+						$("#kolvo").text( $( this ).slider( "value" ) );
+					},
+					slide: function (event, ui) {
+						$("#kolvo").text(ui.value);
+					}
+				});
+				$("accordion a").tooltip();
+			});
+			$('#open').click(function(){
+				$('#dialog').dialog('open');
+
+				var srch = $("#search").val();
+				var tur = "Тур в " + srch;
+				if (srch.substr(srch.length-1) == "я") {
+					tur = "Тур в " + srch.substr(0, srch.length-1) + "ю";
+					
+				}
+				$("#d_tur").text(tur);
+
+				$("#d_num").text("Количество путешественников: " + $("#kolvo").text());
+
+				$("#d_date").text("Вылет " + $("#date").val() + "  на " + $("#days").val() + " дней");
+			});
+
+			$('#good').click(function(){
+				$('#choice').dialog('open');
+				$("#price").text("12345");
+			});
+			$('#call').click(function(){
+				$('#finish').dialog('open');
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<div class="content">
+		<div class="main">
+			<!-- страна -->
+			<h2>Выберите страну</h2>
+			<div id="contr">
+				<form class="form-inline">
+					<input type="text" class="form-control" id="search">
+				</form>
+			</div>
+
+
+			<!-- accordion -->
+			<h2>Какими бывают отели?</h2>
+			<div id="accordion">
+				<h3>Бутик-отель</h3>
+				<div>
+					<p>Бутик-отели — шикарные гостиницы 5*, которые в первую очередь заботятся о стиле и дизайне. Термин «бутик-отель» появился в США в 1980-х годах, тогда же открылись и первые отели такого уровня. Стоимость проживания в таких гостиницах очень высока, зато располагаются они по большей части в самом центре курорта-города.</p>
+				</div>
+
+				<h3>Апартаменты</h3>
+				<div>
+					<p>Апартаменты представляют собой квартиры (реже — небольшие домики, виллы, полдома с отдельным входом), которые сдаются в аренду туристам из разных стран на длительный и не очень срок.</p>
+				</div>
+
+				<h3>Bed and Breakfast <a title="дословно «кровать и завтрак»">рус.</a></h3>
+				<div>
+					<p>Бюджетные гостиницы, которые зачастую не имеют «звездной» классификации и даже (например, в Англии) статуса отеля. При этом именно в Bed and Breakfast можно с лихвой вкусить традиционной, приготовленной своими руками кухни региона, почувствовать домашний уют и колорит страны.</p>
+				</div>
+
+				<h3>Хостел</h3>
+				<div>
+					<p>Хостелы — молодежные гостиницы, в которых останавливаются путешественники, предпочитающее как можно экономичнее провести свой отпуск. Самые дешевые номера в хостелах, как правило, представляют собой большие комнаты, в которых рядами стоят двуспальные кровати и тумбочки с замочками.</p>
+				</div>
+			</div>
+
+			<!-- period -->
+			<h2>Выберите период</h2>
+			<form class="form-inline" id="period">
+				<div class="group-first">
+					<label for="date">Дата вылета:</label>
+					<input type="text" class="form-control" id="date">
+				</div>
+				<div class="group-first">
+					<label for="days">Количество дней:</label>
+					<input type="text" class="form-control" id="days">
+				</div>
+			</form>
+
+			<!-- slider -->
+			<h2>Сколько людей поедет на отдых?</h2>
+			<div id="slider"></div> <p id="kolvo"></p>
+
+			<!-- button -->
+			<button class="btn btn-success" id="open">Выбрать</button>
+
+			<!-- dialog -->
+			<div id="dialog">
+				<h2 id="d_tur"></h2>
+				<h2 id="d_num"></h2>
+				<h2 id="d_date"></h2>
+				<select id="select">
+					<option>Бутик-отель</option>
+					<option selected="select">Апартаменты</option>
+					<option>Bed and Breakfast</option>
+					<option>Хостел</option>
+				</select>
+			</div>
+
+			<!-- choice -->
+			<div id="choice">
+				<h2>Стоимость тура составит:</h2>
+				<h2 id="price"></h2>
+				<div id="contact">
+					<h2>Для покупки тура оставьте свои контакты, и наш менеджер перезвонит вам!</h2>
+					
+					<div id="info">
+						<label for="date">Имя</label>
+						<input type="text" id="fio">
+						<label for="date">Номер телефона</label>
+						<input type="text" id="phone">
+					</div>
+
+					<button class="btn btn-success" id="call">Жду звонка</button>
+				</div>
+
+				<div id="finish">
+					<h2>Хорошего путешествия!</h2>
+				</div>
+			</div>
+		</div>
+		<div class="navigate">
+			<a href="../index.html" id="task_list">На главную</a>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="footer_text">
+			<img src="../images/sloth_right.png" alt="">
+			<p>&copy Ленивая разработка. Кулаков Борис</p>
+		</div>
+	</div>
+
+</body>
+</html>
